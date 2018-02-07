@@ -32,6 +32,7 @@ class CalculationService(statisticsService: StatisticsService) {
     val minAge = Try(ages.min)
     val maxAge = Try(ages.max)
 
+    // (x, y) is a syntax for a tupple. '_ =>' means match anything and dont care about the match result.
     (minAge, maxAge) match {
       case (Success(min), Success(max)) => buildRanges(min, max, RANGE_FACTOR).map(range => mapToCsv(range, allEmployees)).toList
       case _ => empty

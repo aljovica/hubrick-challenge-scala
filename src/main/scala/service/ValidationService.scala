@@ -1,6 +1,6 @@
 package service
 
-import model.{AgeCsv, CsvModel, EmployeeCsv}
+import model.{AgeCsv, EmployeeCsv}
 
 import scala.util.Try
 
@@ -13,7 +13,11 @@ class ValidationService {
     validate[EmployeeCsv](convertEmployeeLine, line)
   }
 
-  private def validate[CSVModel <: CsvModel](convertLineFunction: String => Option[CSVModel], line: String) = {
+  // this method takes a conversion function as a parameter and tries to do the conversion.
+  // if an exception happens a message is logged and None returned
+  // if there is no error a Optional value is returned
+  // In the calling method the None values are filtered out
+  private def validate[CSVModel](convertLineFunction: String => Option[CSVModel], line: String) = {
     Try(convertLineFunction(line)).toOption.flatMap {
       case None =>
         println(s"""Not able to parse line: "$line"""")

@@ -44,10 +44,13 @@ class CsvService(validationService: ValidationService) {
     }
   }
 
+  // Try is returning a Failure object in case an exception occurs, or Success(result) if there are no exceptions
+  // Then a match is done to print an error message
   private def writeTextToFile(fileName: String, text: String) = {
     Try {
       write(get(fileName), text.getBytes)
     } match {
+        // The underscore means that I dont care about the value of the Failure constructor
       case Failure(_) => println(s"Unable to write to file: $fileName")
       case unit => unit
     }

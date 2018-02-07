@@ -1,5 +1,4 @@
 package object model {
-  trait CsvModel
   trait CsvWritable {
     def toCsvLine: String
   }
@@ -12,9 +11,9 @@ package object model {
     override def toCsvLine: String = s"$departmentName,$value"
   }
 
-  case class AgeCsv(name: String, age: Int) extends CsvModel
-  case class EmployeeCsv(departmentId: Int, name: String, gender: String, salary: Double) extends CsvModel
-  case class DepartmentCsv(name: String) extends CsvModel
+  case class AgeCsv(name: String, age: Int)
+  case class EmployeeCsv(departmentId: Int, name: String, gender: String, salary: Double)
+  case class DepartmentCsv(name: String)
 
   case class Department(id: Int, name: String)
   case class Employee(department: Department, name: String, gender: String, salary: Double, age: Integer)
