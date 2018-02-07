@@ -13,3 +13,4 @@ dist
 /.settings
 data
 /reports
+/project/build.properties
