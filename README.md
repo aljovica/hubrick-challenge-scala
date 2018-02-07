@@ -1,6 +1,8 @@
-# hubrick-challenge-java
+# hubrick-challenge-scala
 
 ## How to use app
+To run the script, an *sbt* and *scala* installation are required. 
+
 There is a build script to execute it with one parameter, which is the 
 full path to the data folder. The data folder has to have following
 files:  
